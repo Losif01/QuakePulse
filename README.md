@@ -4,7 +4,11 @@ _following the earthquake that woke me up at 3 am, my mind was shaken enough to 
 
 **QuakePulse** is an MLOps application that ingests, processes, and forecasts seismic hazard probabilities for the **Gulf of Suez, Egypt**.
 
+![Image1](ss/up.png)
+
 The project bridges empirical **Machine Learning** with deterministic **Geophysical Physics**, wrapped in a high-performance FastAPI backend, an interactive Streamlit dashboard, and fully containerized via Docker Compose for seamless deployment.
+
+![Image2](ss/down.png)
 
 ## Architectural Highlights & MLOps Focus
 
