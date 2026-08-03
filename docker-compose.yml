@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: .
+    container_name: quakepulse-backend
+    # Let the PATH resolve uvicorn automatically
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=sqlite:////app/data/Hezny.db
+      - MODEL_PATH=data/model.json
+    restart: unless-stopped
+
+  frontend:
+    build: .
+    container_name: quakepulse-frontend
+    # Let the PATH resolve streamlit automatically
+    command: streamlit run ui.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://backend:8000/api/v1
+    depends_on:
+      - backend
+    restart: unless-stopped
